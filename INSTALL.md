@@ -1,37 +1,57 @@
 # The New E-Mail Protocol (NEMP) - web client software - installation instructions
 
-To download the latest version of this software, run the following commands:
+## Download
+
+These are download instructions of this software for the different Linux distributions.
+
+### Debian / Ubuntu Linux
 
 ```console
 apt update
 apt -y upgrade
 apt -y install git
+cd /root/
 git clone https://github.com/libersoft-org/nemp-client-web.git
 cd nemp-client-web
 ```
 
-Now you need to move the content of the "src" folder to your web root subdirectory.
+### CentOS / RHEL / Fedora Linux
 
-Here are the examples of how to do it based on different web servers:
+```console
+dnf -y update
+dnf -y install git
+cd /root/
+git clone https://github.com/libersoft-org/nemp-client-web.git
+cd nemp-client-web
+```
+
+## Installation
+
+Here are examples based on web server software that you're using:
 
 ### NEMP Server
 
-This is the example for NEMP server stored in /root/nemp-server/:
-
-- Move the content of the "src" folder to your web root:
+- Move the content of the "src" folder to your NEMP Server web root subdirectory (example for server stored in **/root/nemp-server/** directory):
 
 ```console
-mkdir /root/nemp-server/www/webmail
-mv ./src /root/nemp-server/www/webmail
+mkdir /root/nemp-server/src/www/client
+mv ./src /root/nemp-server/src/www/client
 ```
 
-- Then open the web browser and navigate to: https://nemp.domain.tld/webmail/
+- Then open the web browser and navigate to: https://nemp.domain.tld/client/ (replace **nemp.domain.tld** with your actual NEMP Server domain name)
 
 ### NGINX
 
-This is the example for web client stored in **/var/www/nemp.domain.tld/webmail/** directory:
+- Move the content of the "src" folder to your NGINX web root subdirectory (example for server stored in **/var/www/nemp.domain.tld/** directory):
 
-- Create the virtual web configuration file for your NGINX server (by default in: /etc/nginx/sites-available/) named by your domain name (for example: **nemp.domain.tld.conf**) and insert this content:
+```console
+mkdir /var/www/nemp.domain.tld/client
+mv ./src /var/www/nemp.domain.tld/client
+```
+
+- Then open the web browser and navigate to: https://nemp.domain.tld/client/ (replace **nemp.domain.tld** with your actual NEMP Server domain name)
+
+If you don't have your NGINX server block, here is the example of configuration file (by default in: /etc/nginx/sites-enabled/) named by your domain name (for example: **nemp.domain.tld.conf**):
 
 ```ini
 server {
@@ -41,7 +61,7 @@ server {
  listen [::]:443 ssl http2;
  server_name nemp.domain.tld;
  index index.html index.htm;
- root /var/www/nemp.domain.tld/webmail/;
+ root /var/www/nemp.domain.tld/;
  ssl_certificate /etc/letsencrypt/live/nemp.domain.tld/fullchain.pem;
  ssl_certificate_key /etc/letsencrypt/live/nemp.domain.tld/privkey.pem;
 
@@ -59,15 +79,7 @@ server {
 }
 ```
 
-Replace **nemp.domain.tld** with your actual domain name and save the file.
-
-... then move the content of the "src" directory to your web server root, for example:
-
-```console
-mkdir /var/www/nemp.domain.tld
-mkdir /var/www/nemp.domain.tld/webmail
-mv ./src /var/www/nemp.domain.tld/webmail/
-```
+(replace **nemp.domain.tld** with your actual domain name and save the file)
 
 Then restart your NGINX server using:
 
