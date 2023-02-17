@@ -1,6 +1,6 @@
 # The New E-Mail Protocol (NEMP) - web client software
 
-This is the web client implementation of [**NEMP Protocol**](https://github.com/libersoft-org).
+This is the web client client software for [**NEMP Server**](https://github.com/libersoft-org/nemp-server/).
 
 ## Development status
 
@@ -8,7 +8,7 @@ This is the web client implementation of [**NEMP Protocol**](https://github.com/
 
 ## Documentation
 
-- [**Web client installation**](./INSTALL.md)
+- [**Installation instructions**](./INSTALL.md)
 - [**License**](./LICENSE)
 
 ## Donations
