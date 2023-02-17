@@ -2,13 +2,10 @@
 
 This is the web client client software for [**NEMP Server**](https://github.com/libersoft-org/nemp-server/).
 
-## Development status
-
-- Early stage of development, not intended for production deployment
-
 ## Documentation
 
 - [**Installation instructions**](./INSTALL.md)
+- [**Development roadmap**](./ROADMAP.md)
 - [**License**](./LICENSE)
 
 ## Donations
